@@ -47,12 +47,11 @@ var Robot = function(left_wheel, right_wheel, eyes) {
             console.log("=========");
             console.log(actionName);
             var action = actions[actionName];
+            action();
             if (duration) {
                 setTimeout(function() {
-                    self.stop();
+                    actions.stop();
                 }, duration);
-            } else {
-                action();
             }
         }
     }

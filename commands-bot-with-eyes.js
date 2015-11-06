@@ -19,6 +19,8 @@ board.on("ready", function() {
   //var left_wheel  = new five.Servo({ pin: 10, type: 'continuous' }).stop();
   var left_wheel  = new five.Servo({ pin: 10, type: 'continuous' }).stop();
   var right_wheel = new five.Servo({ pin: 11, type: 'continuous'  }).stop();
+  var ping = new five.Ping(12);
+
   var robot = new Robot(left_wheel, right_wheel);
 
   process.stdin.resume();
@@ -68,8 +70,16 @@ board.on("ready", function() {
     else if(key.ctrl && key.name == 'g'){
         robotCommander.execute();
     }
+
   });
 
+  ping.on("change", function(err, value) {
+    console.log("Object is " + this.cm + "cm away");
+    if (this.cm <= 5){
+        robot.stop();
+        robot.direction('reverse', 1000);
+    }
+  });
 
   //
 
