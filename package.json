@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "johnny-five": "^0.9.7",
-    "temporal": "^0.4.1"
+    "temporal": "^0.4.1",
+    "keypress": "~0.2.1"
   }
 }
