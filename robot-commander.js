@@ -5,23 +5,32 @@ module.exports = function(fileName, robot){
 
     console.log("Found file", fileName);
 
-    var commandQueue = getCommands(fileName)
-      .filter(function(cmd){ return cmd.direction != "" })
-      .map(function(cmd){
-        return {
-            delay : cmd.duration,
-            task : robotCommand(cmd)
-        }
-    });
+    function executeCommands(){
+        return getCommands(fileName)
+          .filter(function(cmd){ return cmd.direction != "" })
+          .map(function(cmd){
+            return {
+                delay : cmd.duration,
+                task : robotCommand(cmd)
+            }
+          });
+    }
 
     function getCommands(file_name){
         var commands = fs.readFileSync(file_name, 'utf8');
         var commandList = commands.split("\n");
         commandList = commandList.map(function(line){
-            var lines = line.split(",")
+            var lines = line.split("->");
+
+            console.log(lines);
+
+            if (lines.length == 1){
+                return {
+                };
+            }
             return {
-                direction : lines[0],
-                duration : Number(lines[1])
+                direction : lines[1].trim(),
+                duration : Number(lines[0].trim())
             };
         });
 
@@ -39,7 +48,7 @@ module.exports = function(fileName, robot){
     return {
 
         execute : function () {
-            temporal.queue(commandQueue);
+            temporal.queue(executeCommands());
         }
 
     }

@@ -17,8 +17,8 @@ board.on("ready", function() {
   console.log("Control Soccerbot with the arrow keys, and SPACE to stop.")
 
   //var left_wheel  = new five.Servo({ pin: 10, type: 'continuous' }).stop();
-  var left_wheel  = new five.Servo({ pin: 10, type: 'continuous' }).stop();
-  var right_wheel = new five.Servo({ pin: 11, type: 'continuous'  }).stop();
+  var left_wheel  = new five.Servo({ pin: 10, type: 'continuous', offset : 1 }).stop();
+  var right_wheel = new five.Servo({ pin: 11, type: 'continuous', offset : 7  }).stop();
   var robot = new Robot(left_wheel, right_wheel);
 
   process.stdin.resume();

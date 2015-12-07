@@ -1,8 +1,5 @@
-forward,1000
-left,1000
-stop,2000
-forward,1000
-forward,2000
-reverse,1000
-forward,1000
-stop,1000
+1000 -> forward
+1000 -> left
+1000 -> forward
+1000 -> left
+500 -> stop
