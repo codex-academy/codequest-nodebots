@@ -28,7 +28,12 @@ board.on("ready", function() {
   //load commands
 
   var fileName = process.argv[2];
-  var robotCommander = RobotCommander(fileName, robot);
+  
+  var robotCommander = null;
+  
+  if (fileName){
+    robotCommander = RobotCommander(fileName, robot);
+  }
 
   process.stdin.on('keypress', function (ch, key) {
 
@@ -66,7 +71,8 @@ board.on("ready", function() {
 
     }
     else if(key.ctrl && key.name == 'g'){
-        robotCommander.execute();
+        if(robotCommander)
+            robotCommander.execute();
     }
   });
 
