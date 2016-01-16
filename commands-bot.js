@@ -43,14 +43,14 @@ board.on("ready", function() {
       console.log('Quitting');
       process.exit();
 
-    } else if ( key.name == 'down' ) {
+    } else if ( key.name == 'up' ) {
 
       console.log('Forward');
       robot.direction('forward');
 
       //robot.move('forward', 1500);
 
-    } else if ( key.name == 'up' ) {
+    } else if ( key.name == 'down' ) {
 
       console.log('Backward');
       robot.reverse()
@@ -71,7 +71,8 @@ board.on("ready", function() {
 
     }
     else if(key.ctrl && key.name == 'g'){
-        if(robotCommander)
+        console.log('=> ');
+	if(robotCommander)
             robotCommander.execute();
     }
   });

@@ -40,14 +40,14 @@ board.on("ready", function() {
       console.log('Quitting');
       process.exit();
 
-    } else if ( key.name == 'down' ) {
+    } else if ( key.name == 'up' ) {
 
       console.log('Forward');
       robot.direction('forward');
 
       //robot.move('forward', 1500);
 
-    } else if ( key.name == 'up' ) {
+    } else if ( key.name == 'down' ) {
 
       console.log('Backward');
       robot.reverse()
@@ -77,7 +77,7 @@ board.on("ready", function() {
     console.log("Object is " + this.cm + "cm away");
     if (this.cm <= 5){
         robot.stop();
-        robot.direction('reverse', 1000);
+        robot.direction('reverse', 2000);
     }
   });
 
